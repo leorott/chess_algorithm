@@ -1,7 +1,14 @@
 package org.example;
 
+import java.util.Map;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Let'git remote add origin git@github.com:leorott/chess_algorithm.gits play Chess");
+        String initialPositions = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+        Board board = new Board(initialPositions);
+        Map<String, String> positions = board.getPositions();
+        System.out.println(positions);
+        System.out.println(board.getPieceAtPosition("b2"));
+
     }
 }
