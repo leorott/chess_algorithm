@@ -1,4 +1,4 @@
-package org.example;
+package ch.lucaleo;
 
 import java.util.Arrays;
 import java.util.HashMap;
