@@ -1,14 +1,19 @@
 package ch.lucaleo;
 
-import java.util.Map;
+import de.dokchess.allgemein.Stellung;
+import de.dokchess.regeln.DefaultSpielregeln;
+import de.dokchess.regeln.Spielregeln;
+
 
 public class Main {
     public static void main(String[] args) {
+/*
         String initialPositions = "r1bqk1nr/ppppbppp/8/4N3/6PP/8/PPPPP3/RNBQKB1R w - - 10 18";
-        Board board = new Board(initialPositions);
-        Map<String, String> positions = board.getPositions();
-        System.out.println(positions);
-        System.out.println(board.getPieceAtPosition("b2"));
-
+*/
+        Stellung stellung = new Stellung("r1bqk1nr/ppppbppp/8/4N3/6PP/8/PPPPP3/RNBQKB1R w - - 10 18");
+        Spielregeln spielregeln = new DefaultSpielregeln();
+        System.out.println(spielregeln.liefereGueltigeZuege(stellung));
+        Engine engine = new Engine();
+        engine.isCheckmateIn2MovesPossible(stellung);
     }
 }
