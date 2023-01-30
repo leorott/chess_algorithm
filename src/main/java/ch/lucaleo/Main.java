@@ -15,7 +15,7 @@ public class Main {
         List<List<Zug>> mattZuege = engine.isCheckmateIn2MovesPossible(stellung);
 
         if (mattZuege.size() >= 1){
-            System.out.println("Matt in zwei Zuegen ist mit folgenen Zuegen möglich");
+            System.out.println("Matt in zwei Zuegen ist mit folgenen Zuegen moeglich");
             mattZuege.forEach(System.out::println);
 
         } else {

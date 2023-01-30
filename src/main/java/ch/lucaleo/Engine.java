@@ -12,7 +12,9 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class Engine {
     public Engine() {
+
     }
+
 
     public List<List<Zug>> isCheckmateIn2MovesPossible(Stellung initialStellung){
         Spielregeln spielregeln = new DefaultSpielregeln();
@@ -20,31 +22,31 @@ public class Engine {
         List<List<Zug>> mattZuege = new ArrayList<>();
         AtomicReference<Integer> index = new AtomicReference<>(0);
 
-        moeglicheZuege.forEach((zug1) -> {
+        moeglicheZuege.forEach((teilzug1) -> {
             index.getAndSet(index.get() + 1);
-            Stellung stellungNachTeilzug1 = initialStellung.fuehreZugAus(zug1);
+            Stellung stellungNachTeilzug1 = initialStellung.fuehreZugAus(teilzug1);
             Collection<Zug> possibleMovesAfterZug1 = spielregeln.liefereGueltigeZuege(stellungNachTeilzug1);
 
-            possibleMovesAfterZug1.forEach((zug2) -> {
+            possibleMovesAfterZug1.forEach((teilzug2) -> {
                 index.getAndSet(index.get() + 1);
-                Stellung stellungNachTeilzug2 = stellungNachTeilzug1.fuehreZugAus(zug2);
+                Stellung stellungNachTeilzug2 = stellungNachTeilzug1.fuehreZugAus(teilzug2);
                 Collection<Zug> possibleMovesAfterZug2 = spielregeln.liefereGueltigeZuege(stellungNachTeilzug2);
 
-                possibleMovesAfterZug2.forEach((zug3) -> {
+                possibleMovesAfterZug2.forEach((teilzug3) -> {
                     index.getAndSet(index.get() + 1);
-                    Stellung stellungNachTeilzug3 = stellungNachTeilzug2.fuehreZugAus(zug3);
+                    Stellung stellungNachTeilzug3 = stellungNachTeilzug2.fuehreZugAus(teilzug3);
                     Collection<Zug> possibleMovesAfterZug3 = spielregeln.liefereGueltigeZuege(stellungNachTeilzug3);
 
-                    possibleMovesAfterZug3.forEach((zug4) -> {
+                    possibleMovesAfterZug3.forEach((teilzug4) -> {
                         index.getAndSet(index.get() + 1);
-                        Stellung stellungNachTeilzug4 = stellungNachTeilzug3.fuehreZugAus(zug4);
+                        Stellung stellungNachTeilzug4 = stellungNachTeilzug3.fuehreZugAus(teilzug4);
 
                         if (spielregeln.aufMattPruefen(stellungNachTeilzug4)){
                             List<Zug> zuege = new ArrayList<>();
-                            zuege.add(zug1);
-                            zuege.add(zug2);
-                            zuege.add(zug3);
-                            zuege.add(zug4);
+                            zuege.add(teilzug1);
+                            zuege.add(teilzug2);
+                            zuege.add(teilzug3);
+                            zuege.add(teilzug4);
                             mattZuege.add(zuege);
                         }
                     });
@@ -55,4 +57,5 @@ public class Engine {
         System.out.println("Anzahl Iterationen: " + index);
         return mattZuege;
     }
+
 }
