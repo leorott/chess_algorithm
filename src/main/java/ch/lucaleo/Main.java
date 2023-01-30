@@ -12,10 +12,10 @@ public class Main {
 */
         Stellung stellung = new Stellung("r1bqk1nr/ppppbppp/8/4N3/6PP/8/PPPPP3/RNBQKB1R w - - 10 18");
         Engine engine = new Engine();
-        List<Zug> mattZuege = engine.isCheckmateIn2MovesPossible(stellung);
+        List<List<Zug>> mattZuege = engine.isCheckmateIn2MovesPossible(stellung);
 
         if (mattZuege.size() >= 1){
-            System.out.println("Matt in zwei Zuegen ist moeglich");
+            System.out.println("Matt in zwei Zuegen ist mit folgenen Zuegen möglich");
             mattZuege.forEach(System.out::println);
 
         } else {
