@@ -25,22 +25,22 @@ public class Engine {
         moeglicheZuege.forEach((teilzug1) -> {
             index.getAndSet(index.get() + 1);
             Stellung stellungNachTeilzug1 = initialStellung.fuehreZugAus(teilzug1);
-            Collection<Zug> possibleMovesAfterZug1 = spielregeln.liefereGueltigeZuege(stellungNachTeilzug1);
+            Collection<Zug> moeglicheZuegeNachTeilzug1 = spielregeln.liefereGueltigeZuege(stellungNachTeilzug1);
 
             // Iteration ueber alle erlaubten Zuege nach Teilzug 1
-            possibleMovesAfterZug1.forEach((teilzug2) -> {
+            moeglicheZuegeNachTeilzug1.forEach((teilzug2) -> {
                 index.getAndSet(index.get() + 1);
                 Stellung stellungNachTeilzug2 = stellungNachTeilzug1.fuehreZugAus(teilzug2);
-                Collection<Zug> possibleMovesAfterZug2 = spielregeln.liefereGueltigeZuege(stellungNachTeilzug2);
+                Collection<Zug> moeglicheZuegeNachTeilzug2 = spielregeln.liefereGueltigeZuege(stellungNachTeilzug2);
 
                 // Iteration ueber alle erlaubten Zuege nach Teilzug 2
-                possibleMovesAfterZug2.forEach((teilzug3) -> {
+                moeglicheZuegeNachTeilzug2.forEach((teilzug3) -> {
                     index.getAndSet(index.get() + 1);
                     Stellung stellungNachTeilzug3 = stellungNachTeilzug2.fuehreZugAus(teilzug3);
-                    Collection<Zug> possibleMovesAfterZug3 = spielregeln.liefereGueltigeZuege(stellungNachTeilzug3);
+                    Collection<Zug> moeglicheZuegeNachTeilzug3 = spielregeln.liefereGueltigeZuege(stellungNachTeilzug3);
 
                     // Iteration ueber alle erlaubten Zuege nach Teilzug 3
-                    possibleMovesAfterZug3.forEach((teilzug4) -> {
+                    moeglicheZuegeNachTeilzug3.forEach((teilzug4) -> {
                         index.getAndSet(index.get() + 1);
                         Stellung stellungNachTeilzug4 = stellungNachTeilzug3.fuehreZugAus(teilzug4);
 
